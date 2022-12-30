@@ -7,3 +7,15 @@ services:
       - .:/django-facebook-with-docker
     ports:
       - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_datas:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+
+volumes:
+  postgres_datas:
