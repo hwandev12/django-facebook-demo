@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    command: python /django-facebook-with-docker/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/django-facebook-with-docker
+    ports:
+      - 8000:8000

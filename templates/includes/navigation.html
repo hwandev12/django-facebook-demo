@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+<header>
+    <nav>
+        <ul>
+            <li> <a href="#" id="fb"> <i class="fab fa-facebook-f    "></i> </a> </li>
+            <div class="wrap">
+                <div class="search">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <input type="text" class="searchTerm" placeholder="Search Facebook">
+                </div>
+            </div>
+
+            <li id="space2"></li>
+
+            <li> <a class="tooltip active" data-tooltip="Home" href="#" id="home"> <i class="fas fa-home    "></i> </a>
+            </li>
+            <li> <a class="tooltip" data-tooltip="Group" href="#" id="group"> <i class="fas fa-user-friends    "></i>
+                </a></li>
+            <li> <a class="tooltip" data-tooltip="Watch" href="#" id="tv"> <i class="fas fa-tv    "></i> </a> </li>
+            <li> <a class="tooltip" data-tooltip="Friend" href="#" id="friend"> <i class="fas fa-user-alt    "></i> </a>
+            </li>
+            <li id="space1"></li>
+            <li> <button class="tooltip" data-tooltip="Menu" id="btn_plus"><i
+                        class="fa-regular fa-compass"></i></button> </li>
+            <li> <button class="tooltip" data-tooltip="Message" id="btn_msg"><i
+                        class="fab fa-facebook-messenger    "></i></button></li>
+            <li> <button class="tooltip" data-tooltip="Notification" id="btn_bell"> <i
+                        class="fas fa-bell    "></i></button></li>
+            <li> <button class="tooltip" data-tooltip="Profile" id="btn_profile"><i
+                        class="fas fa-user-cog    "></i></button> </li>
+        </ul>
+    </nav>
+</header>
