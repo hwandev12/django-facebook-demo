@@ -2,22 +2,22 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 <!-- create story section -->
 <div class="content_wrapper">
-        <section class="create_story">
-            <div class="inner_wrapper">
-                <i class="fa-solid fa-plus"></i>
-                <div class="right_inner_wrapper">
-                    <h2>Create Story</h2>
-                    <p>Share a photo or write something</p>
-                </div>
+    <section class="create_story">
+        <div class="inner_wrapper">
+            <i class="fa-solid fa-plus"></i>
+            <div class="right_inner_wrapper">
+                <h2>Create Story</h2>
+                <p>Share a photo or write something</p>
             </div>
-        </section>
+        </div>
+    </section>
     <!-- create story section -->
 
     <!-- create post section -->
 
     <section class="create_post">
         <div class="inner_create_post_wrapper">
-            <img src="{% static 'images/facebook.png' %}" alt="" width="35">
+            <img src="{% static 'images/nature.jpg' %}" alt="No image">
             <input type="text" placeholder="What is on your mind?">
         </div>
         <div class="inner_bottom_post_wrapper">
@@ -35,6 +35,57 @@
             </div>
         </div>
     </section>
-</div>
+    <!-- create post section -->
 
-<!-- create post section -->
+    <!-- posts section -->
+
+    <div class="posts">
+        <p class="top_p">Suggested for you</p>
+        <hr class="top_hr">
+        <div class="user_info">
+            <img src="{% static 'images/nature.jpg' %}" alt="No image">
+            <div style="display: flex; align-items: flex-start; flex-direction: column;">
+                <span style="display: flex; align-items: center;">
+                    <h3>Travel</h3><i class="fa-solid fa-circle"></i>
+                    <a href="#">Follow</a>
+                </span>
+                <p class="date_post">27 December at 19:00</p>
+            </div>
+            <div class="icon_post">
+                <i class="fa-solid fa-ellipsis"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+        <p class="content_post">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus consequatur autem
+            ullam nam.</p>
+        <div class="content_image" style="background-image: url({% static 'images/natures.jpg' %});"></div>
+        <div class="bottom_comment_likes">
+            <div class="inner_p">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <p>1.5K</p>
+            </div>
+            <div class="right_comment">
+                <p>12 comments</p>
+                <p>121 shares</p>
+            </div>
+        </div>
+        <hr class="top_hr">
+        <section class="bottom_row_likes">
+            <div class="each_col">
+                <i class="fa-solid fa-heart"></i>
+                <p>Love</p>
+            </div>
+            <div class="each_col">
+                <i class="fa-regular fa-message"></i>
+                <p>Comment</p>
+            </div>
+            <div class="each_col">
+                <i class="fa-solid fa-share"></i>
+                <p>Share</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- posts section -->
+
+</div>

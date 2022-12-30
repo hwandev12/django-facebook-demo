@@ -1,3 +1,6 @@
+body {
+    overflow-y: hidden;
+}
 .wrapper {
     background-color: #D1D5DB;
 }
@@ -9,6 +12,10 @@
     width: 100%;
     position: relative;
     left: -60px;
+    height: 90vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding-bottom: 25px;
 }
 
 .create_story {
@@ -43,7 +50,14 @@
     background-color: white;
     margin-top: 15px;
     padding: 8px 15px;
-    border-radius: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px #9999, -2px -2px 3px #9999;
+}
+
+.create_post img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .inner_create_post_wrapper {
@@ -88,7 +102,12 @@
     cursor: pointer;
 }
 
-.fa-regular {
+.fa-circle-play {
+    color: red;
+    font-size: 20px;
+    margin-right: 5px;
+}
+.fa-file-video{
     color: red;
     font-size: 20px;
     margin-right: 5px;
@@ -102,4 +121,154 @@
 
 .icon_text p {
     font-weight: 700;
+}
+
+.posts {
+    background-color: #fff;
+    width: 50%;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 3px #9999, -2px -2px 3px #9999;
+    /* padding: 10px 15px; */
+}
+
+.top_p {
+    padding: 12px 15px;
+}
+
+.top_hr {
+    width: 94%;
+    height: 1px;
+    border: none;
+    background-color: rgb(215, 215, 215);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user_info {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 8px;
+    padding: 2px 15px;
+}
+
+.user_info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user_info h3 {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.user_info a {
+    color: #216FDB;
+    display: inline-block;
+    margin-left: 5px;
+}
+.user_info a:hover {
+    text-decoration: underline;
+}
+
+.date_post {
+    font-size: 12px;
+}
+
+.fa-circle {
+    font-size: 2px;
+} 
+
+.icon_post {
+    position: absolute;
+    right: 20px;
+}
+
+.icon_post i {
+    font-size: 25px;
+    color: #777;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.icon_post i:last-child {
+    margin-right: 0;
+}
+
+.content_post{
+    margin-top: 7px;
+    padding: 2px 10px;
+}
+
+.content_image {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 5px;
+}
+.bottom_comment_likes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+}
+
+.bottom_comment_likes p {
+    display: inline;
+}
+.right_comment p{
+    font-size: 15px;
+}
+.inner_p p {
+    font-size: 15px;
+}
+.fa-thumbs-up{
+    color: blue;
+    cursor: pointer;
+    transition: 0.5s transform ease;
+}
+.fa-thumbs-up:hover {
+    transform: scale(1.2);
+}
+.bottom_row_likes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+}
+.bottom_row_likes p {
+    color: #444;
+}
+.bottom_row_likes .each_col:last-child {
+    margin-right: 0;
+}
+.each_col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+.each_col i {
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.5s transform ease;
+}
+.each_col i:hover {
+    transform: scale(1.2);
+}
+.fa-heart{
+    margin-right: 8px;
+    color: red;
+}
+.fa-message{
+    margin-right: 8px;
+    color: #444;
+}
+.fa-share{
+    margin-right: 8px;
+    color: #444;
 }
