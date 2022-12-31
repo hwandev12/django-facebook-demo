@@ -1,6 +1,33 @@
 body {
     font-family: 'Mulish', sans-serif;
 }
+.container {
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.big_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 12%;
+}
+.left_login h2 {
+    font-size: 3rem;
+    color: #1877F2;
+    font-weight: 800;
+    letter-spacing: -3;
+    line-height: 10px;
+}
+.left_login h4 {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: -1;
+    font-weight: normal;
+}
+.left_login p {
+    font-size: 1.2rem;
+}
 .clearfix:after {
     content: "";
     display: block;
@@ -15,7 +42,6 @@ body {
     max-width: 100%;
     box-sizing: border-box;
     padding: 25px;
-    margin: 8% auto 0;
     position: relative;
     z-index: 1;
     border-top: 5px solid #f5ba1a;

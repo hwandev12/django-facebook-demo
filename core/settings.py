@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
 
     # local installments
     'authentication.apps.AuthenticationConfig',
@@ -136,14 +137,20 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" to send emails
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = 'smtp.gmail.com' #new
+# EMAIL_PORT = 587 #new
+# EMAIL_HOST_USER = 'husanboy0239@gmail.com'  #new
+# EMAIL_HOST_PASSWORD = "thignsdsd" #new
+# EMAIL_USE_TLS = True #new
+
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
-DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+DEFAULT_FROM_EMAIL = 'husanboy0239@gmail.com'
 ACCOUNT_FORMS = {
     'signup': 'authentication.forms.RegisterForm',
 }

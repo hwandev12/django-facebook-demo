@@ -13,9 +13,12 @@ body {
     position: relative;
     left: -60px;
     height: 90vh;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    overflow-y: scroll; 
     padding-bottom: 25px;
+}
+.content_wrapper::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 
 .create_story {

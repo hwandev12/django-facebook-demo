@@ -6,24 +6,31 @@
     rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 <title>Registration</title>
-<div class="form_wrapper">
-    <div class="form_container">
-        <div class="title_container">
-            <h2>Facebook Login</h2>
-        </div>
-        <div class="row clearfix">
-            <div class="">
-                <form method="POST">
-                    {% load widget_tweaks %}
-                    {% csrf_token %}
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        {{ form.login }}
-                    </div>
-                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        {{ form.password }}
-                    </div>
-                    <input class="button" type="submit" value="Register" />
-                </form>
+<div class="big_wrapper container">
+    <div class="left_login">
+        <h2>facebook</h2>
+        <h4>Recent logins</h4>
+        <p>Click your picture or add an account.</p>
+    </div>
+    <div class="form_wrapper">
+        <div class="form_container">
+            <div class="title_container">
+                <h2>Facebook Login</h2>
+            </div>
+            <div class="row clearfix">
+                <div class="">
+                    <form method="POST">
+                        {% load widget_tweaks %}
+                        {% csrf_token %}
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                            {{ form.login }}
+                        </div>
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                            {{ form.password }}
+                        </div>
+                        <input class="button" type="submit" value="Login" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>
