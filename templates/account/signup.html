@@ -5,8 +5,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <title>Registration</title>
-<div class="form_wrapper">
+<div class="signup_rapper">
+    <div class="form_wrapper">
     <div class="form_container">
         <div class="title_container">
             <h2>Facebook Sign up</h2>
@@ -17,13 +19,16 @@
                     {% load widget_tweaks %}
                     {% csrf_token %}
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        {{ form.email }}
+                        {% render_field form.email type="email" class="form-control" placeholder="Email" %}
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        {{ form.password1 }}
+                        {% render_field form.password1 type="password" class="form-control" placeholder="Password" %}
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        {{ form.password2 }}
+                        {% render_field form.password2 type="password" class="form-control" placeholder="Confirm Password" %}
+                    </div>
+                    <div class="form-group"> <span></span>
+                        {% render_field form.date_of_birth class="form-control" %}
                     </div>
                     <div class="row clearfix">
                         <div class="col_half">
@@ -37,17 +42,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input_field checkbox_option">
-                        <input type="checkbox" id="cb1">
-                        <label for="cb1">I agree with terms and conditions</label>
-                    </div>
-                    <div class="input_field checkbox_option">
-                        <input type="checkbox" id="cb2">
-                        <label for="cb2">I want to receive the newsletter</label>
-                    </div>
+                    <div class="input_field">
+                        {% render_field form.gender type="radio" class="form-select" %}
+                      </div>
                     <input class="button" type="submit" value="Register" />
                 </form>
+                {{ form.errors }}
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -23,13 +23,17 @@
                         {% load widget_tweaks %}
                         {% csrf_token %}
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                            {{ form.login }}
+                            {% render_field form.username type="email" class="form-control" placeholder="Email" %}
                         </div>
-                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            {{ form.password }}
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                            {% render_field form.password type="password" class="form-control" placeholder="Password" %}
                         </div>
-                        <input class="button" type="submit" value="Login" />
+                        <div class="input_field">
+                            remember me {% render_field form.remember_me type="checkbox" class="form-control" %}
+                        </div>
+                        <input type="submit" value="Login" class="button">
                     </form>
+                    {{form.errors}}
                 </div>
             </div>
         </div>

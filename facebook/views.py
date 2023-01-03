@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = 'pages/home.html'
-    login_url = 'account_login'
+    login_url = 'authenticate/login/'
     
 
 # make class names to function names

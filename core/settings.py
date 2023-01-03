@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     
     'widget_tweaks',
 
@@ -99,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # custom auth user model
-AUTH_USER_MODEL = 'authentication.MyCustomUser'
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -127,11 +126,8 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # EMAIL_HOST = 'smtp.gmail.com' #new
 # EMAIL_PORT = 587 #new
@@ -139,6 +135,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # EMAIL_HOST_PASSWORD = "thignsdsd" #new
 # EMAIL_USE_TLS = True #new
 
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
 # redirect
 LOGIN_REDIRECT_URL = "/"
