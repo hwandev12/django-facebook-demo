@@ -12,7 +12,8 @@ class CustomLoginView(LoginView):
     
     def form_valid(self, form):
         remember_me = form.cleaned_data.get('remember_me')
-        
+        user = form.cleaned_data.get("username")
+        messages.success(self.request, "Welcome " + user)
         if not remember_me:
             self.request.session.set_expiry(0)
             self.request.session.modified = True

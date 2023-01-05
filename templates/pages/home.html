@@ -2,5 +2,12 @@
 {% block title %}homepage{% endblock %}
 
 {% block content %}
-    {% include 'includes/post.html' %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="alert alert-success" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% include 'includes/post.html' %}
 {% endblock %}

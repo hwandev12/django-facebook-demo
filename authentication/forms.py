@@ -10,7 +10,7 @@ GENDER = (('man', 'Man'), ('woman', 'Woman'))
 class RegisterForm(UserCreationForm):
     # fields we want to include and customize in our form
     first_name = forms.CharField(max_length=100, required=True)
-    surname = forms.CharField(max_length=100, required=True)
+    last_name = forms.CharField(max_length=100, required=True)
     email = forms.EmailField(required=True)
     password1 = forms.CharField(max_length=50, required=True)
     password2 = forms.CharField(max_length=50, required=True)
@@ -18,7 +18,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'surname', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
 # login form
 class LoginForm(AuthenticationForm):
