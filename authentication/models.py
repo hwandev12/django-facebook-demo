@@ -34,6 +34,7 @@ class CustomUserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
             password=password,
+            gender=gender,
         )
         user.is_staff=True
         user.save(using=self._db)
@@ -63,9 +64,9 @@ class CustomUser(AbstractBaseUser):
         unique=True
     )
 
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    gender = models.CharField(max_length=10, choices=GENDER)
+    first_name = models.CharField(max_length=200, blank=True)
+    last_name = models.CharField(max_length=200, blank=True)
+    gender = models.CharField(max_length=10, choices=GENDER, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)

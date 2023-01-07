@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    margin-top: 12%;
+    margin-top: 3%;
 }
 .left_login h2 {
     font-size: 3rem;
@@ -331,4 +331,27 @@ body {
     .remember_me {
         padding-bottom: 20px;
     }
+}
+
+.social_auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: rgba(153, 153, 153, 0.1);
+    padding: 5px 14px;
+    transition: .5s background-color ease;
+}
+
+.social_auth:hover {
+    background-color: rgba(153, 153, 153, 0.3);
+}
+
+.fa-github {
+    font-size: 35px;
+    margin-right: 15px;
+}
+.fa-google {
+    font-size: 35px;
+    margin-right: 15px;
 }

@@ -12,7 +12,20 @@
         <h4>Recent logins</h4>
         <p>Click your picture or add an account.</p>
     </div>
-    <div class="form_wrapper">
+   <div>
+    <a style="text-decoration: none; color: #444 !important;" href="{% url 'social:begin' 'github' %}">
+        <div class="social_auth">
+            <i class="fa-brands fa-github"></i>
+            <p>Sign in with Github</p>
+        </div>
+    </a>
+    <a style="text-decoration: none; color: #444 !important;" href="">
+        <div class="social_auth">
+            <i class="fa-brands fa-google"></i>
+            <p>Sign in with Google</p>
+        </div>
+    </a>
+     <div class="form_wrapper">
         <div class="form_container">
             <div class="title_container">
                 <h2>Facebook Login</h2>
@@ -32,7 +45,6 @@
                             remember me {% render_field form.remember_me type="checkbox" class="form-control" %}
                         </div>
                         <p>If you do not have account <a style="color: rgb(41, 139, 219);" href="{% url 'authenticate:user-register' %}">signup</a> or <a  style="color: rgb(41, 139, 219);" href="{% url 'password_reset_view' %}">forget password?</a></p>
-                        <p><a href="{% url 'social:begin' 'github' %}" class="btn btn-link active btn-block">Sign in with GitHub</a></p>
                         <input type="submit" value="Login" class="button">
                     </form>
                     {{form.errors}}
@@ -40,4 +52,5 @@
             </div>
         </div>
     </div>
+   </div>
 </div>
