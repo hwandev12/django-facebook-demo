@@ -340,7 +340,7 @@ body {
     margin-bottom: 10px;
     background-color: rgba(153, 153, 153, 0.1);
     padding: 5px 14px;
-    transition: .5s background-color ease;
+    transition: .2s background-color ease;
 }
 
 .social_auth:hover {
@@ -378,4 +378,38 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.add_login {
+    position: relative;
+    box-shadow: 1px 1px 1px #999, -1px -1px 1px #999;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.fa-plus {
+    background-color: rgb(13, 109, 212);
+    font-size: 2.5rem;
+    text-decoration: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.add_login p {
+    position: absolute;
+    bottom: -19px;
+    width: 100%;
+    text-align: center;
+    background-color: #ccc;
+    padding: 12px 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
