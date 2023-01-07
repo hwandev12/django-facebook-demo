@@ -11,6 +11,14 @@
         <h2>facebook</h2>
         <h4>Recent logins</h4>
         <p>Click your picture or add an account.</p>
+        <div class="login_wrapper">
+            <a href="#">
+                <div class="login_image" style="background-image: url({% static 'images/nature.jpg' %});"></div>
+            </a>
+            <a href="#">
+                <div class="login_image"></div>
+            </a>
+        </div>
     </div>
    <div>
     <a style="text-decoration: none; color: #444 !important;" href="{% url 'social:begin' 'github' %}">
