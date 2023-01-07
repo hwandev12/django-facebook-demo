@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import (
-    AbstractBaseUser, BaseUserManager
+    AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
 
 
@@ -16,9 +16,6 @@ class CustomUserManager(BaseUserManager):
             last_name=last_name,
             gender=gender,
         )
-        user.first_name = first_name
-        user.last_name = last_name
-        user.gender = gender
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -33,14 +30,14 @@ class CustomUserManager(BaseUserManager):
             email,
             first_name=first_name,
             last_name=last_name,
-            password=password,
             gender=gender,
+            password=password,
         )
-        user.is_staff=True
+        user.is_staff = True
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, first_name, last_name, gender, password=None):
+    def create_superuser(self, email, first_name, last_name, gender, password=None, **other_fields):
 
         user = self.create_user(
             email,
@@ -49,7 +46,7 @@ class CustomUserManager(BaseUserManager):
             gender=gender,
             password=password,
         )
-        user.is_admin=True
+        user.is_admin = True
         user.save(using=self._db)
         return user
 
@@ -57,16 +54,16 @@ class CustomUserManager(BaseUserManager):
 GENDER = (('man', 'Man'), ('woman', 'Woman'))
 
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         verbose_name='email address',
         max_length=250,
-        unique=True
+        unique=True,
     )
 
-    first_name = models.CharField(max_length=200, blank=True)
-    last_name = models.CharField(max_length=200, blank=True)
-    gender = models.CharField(max_length=10, choices=GENDER, blank=True)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    gender = models.CharField(max_length=10, choices=GENDER)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
@@ -74,7 +71,7 @@ class CustomUser(AbstractBaseUser):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'gender',]
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'gender']
 
     def __str__(self):
         return self.email
@@ -83,7 +80,7 @@ class CustomUser(AbstractBaseUser):
         return self.is_staff
 
     def has_module_perms(self, app_label):
-        return self.is_staff
+        return self.is_admin
 
     @property
     def is_staff(self):
