@@ -15,12 +15,8 @@ body {
     height: 90vh;
     overflow-y: scroll; 
     padding-bottom: 25px;
+    scrollbar-width: none;
 }
-.content_wrapper::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-}
-
 .create_story {
     width: 70%;
     background-color: white;

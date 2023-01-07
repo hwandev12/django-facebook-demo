@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.views import View
 from django.contrib.auth.views import LoginView
-
+from django.contrib.auth.decorators import login_required
 
 class CustomLoginView(LoginView):
     form_class = LoginForm
@@ -40,14 +40,19 @@ class RegisterView(View):
         form = self.form_class(request.POST)
 
         if form.is_valid():
-            form.save()
+            form.save(commit=False)
             first_name = form.cleaned_data.get('first_name')
             messages.success(request, f'Account created for {first_name}')
 
             return redirect(to='/')
 
         return render(request, self.template_name, {'form': form})
-    
+
+@login_required
+def profile_section_view(request):
+    return render(request, 'account/profile.html')
+
+
 # make classes functionable name
 login_form_view = CustomLoginView.as_view(redirect_authenticated_user=True, authentication_form=LoginForm)
 register_form_view = RegisterView.as_view()

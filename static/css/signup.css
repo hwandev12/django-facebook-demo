@@ -382,7 +382,7 @@ body {
 
 .add_login {
     position: relative;
-    box-shadow: 1px 1px 1px #999, -1px -1px 1px #999;
+    box-shadow: 1px 1px 1px #9995, -1px -1px 1px #9995;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -392,11 +392,11 @@ body {
 
 .fa-plus {
     background-color: rgb(13, 109, 212);
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     text-decoration: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;

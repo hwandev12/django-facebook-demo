@@ -6,12 +6,19 @@ from .forms import (
     UserCreationForm
 )
 from .models import (
-    CustomUser
+    CustomUser, Profile
 )
+    
+class ProfileInline(admin.TabularInline):
+    model = Profile
 
 class CustomUserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
+    
+    inlines = [
+        ProfileInline,
+    ]
     
     list_display = ('email', 'first_name', 'is_active', 'is_admin', 'is_staff')
     list_filter = ('is_admin',)
@@ -31,7 +38,6 @@ class CustomUserAdmin(BaseUserAdmin):
     search_fields = ('email',)
     ordering = ('email',)
     filter_horizontal = ()
-    
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.unregister(Group)

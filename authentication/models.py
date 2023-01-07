@@ -86,3 +86,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def is_staff(self):
         # yes all admins
         return self.is_admin
+
+class Profile(models.Model):
+    """
+    To create profile page, we need to create class related to OneToOneField with
+    CustomUser
+    """
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    
+    avatar = models.ImageField(default='default.jpg', upload_to='profile')
+
+    def __str__(self):
+        return self.user.email

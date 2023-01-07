@@ -158,6 +158,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_PASSWORD = "thignsdsd" #new
 # EMAIL_USE_TLS = True #new
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
@@ -166,3 +169,4 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 # redirect
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT = "/"
+LOGIN_URL = 'authenticate/login/'
