@@ -66,10 +66,10 @@ class UpdateUserForm(forms.ModelForm):
     UpdateUserForm interacts with the user model to let users 
     update their username and email.
     """
-    username = forms.EmailField()
-    first_name = forms.CharField(max_length=200)
-    last_name = forms.CharField(max_length=200)
-    gender = forms.ChoiceField(choices=GENDER)
+    username = forms.EmailField(required=False)
+    first_name = forms.CharField(max_length=200, required=False)
+    last_name = forms.CharField(max_length=200, required=False)
+    gender = forms.ChoiceField(choices=GENDER, required=False)
     
     class Meta:
         model = User

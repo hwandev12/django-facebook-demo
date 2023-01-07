@@ -60,7 +60,7 @@ def profile_section_view(request, pk):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile is updated successfully')
-            return redirect('/authenticate/profile/')
+            return redirect('/')
     else:
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)
