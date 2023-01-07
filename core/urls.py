@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include,re_path
 from django.contrib.auth.views import (
     PasswordResetView,
     PasswordResetDoneView,
@@ -15,4 +15,6 @@ urlpatterns = [
     path('password-reset-done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('password-reset-complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    
+    re_path(r'^oauth/', include('social_django.urls', namespace='social')),
 ]

@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     "crispy_forms",
     "crispy_bootstrap5",
+    # social authentication
+    'social_django',
 
     # local installments
     'authentication.apps.AuthenticationConfig',
@@ -59,6 +61,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # social authenticators
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -123,6 +129,18 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = BASE_DIR / "staticfiles"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# authentication backends
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# social auth configs for github
+SOCIAL_AUTH_GITHUB_KEY = '42a1714d61965ec980ed'
+SOCIAL_AUTH_GITHUB_SECRET = '593bc9a4b1391c0c9ea949bb984279717036bd48'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

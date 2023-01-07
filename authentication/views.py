@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import RegisterForm, LoginForm
+from .forms import UserCreationForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.views import View
@@ -22,9 +22,15 @@ class CustomLoginView(LoginView):
 
 
 class RegisterView(View):
-    form_class = RegisterForm
+    form_class = UserCreationForm
     initial = {'key': 'value'}
     template_name = 'account/signup.html'
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('/')
+        
+        return super(RegisterView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial=self.initial)
