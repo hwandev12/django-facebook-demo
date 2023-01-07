@@ -2,8 +2,11 @@ from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm 
+from django.contrib.auth import get_user_model
 
-from .models import CustomUser
+from .models import CustomUser, Profile
+
+User = get_user_model()
 
 
 class UserCreationForm(forms.ModelForm):
@@ -55,3 +58,32 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'password', 'remember_me']
+
+GENDER = (('man', 'Man'), ('woman', 'Woman'))
+
+class UpdateUserForm(forms.ModelForm):
+    """
+    UpdateUserForm interacts with the user model to let users 
+    update their username and email.
+    """
+    username = forms.EmailField()
+    first_name = forms.CharField(max_length=200)
+    last_name = forms.CharField(max_length=200)
+    gender = forms.ChoiceField(choices=GENDER)
+    
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'gender']
+        
+class UpdateProfileForm(forms.ModelForm):
+    """
+    UpdateProfileForm interacts with the profile model
+    to let users update their profile.
+    """
+    avatar = forms.ImageField()
+    bio = forms.CharField(max_length=300)
+    
+    class Meta:
+        model = Profile
+        fields = ['avatar', 'bio']
+    

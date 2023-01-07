@@ -1,10 +1,12 @@
-from django.shortcuts import redirect, render
-from .forms import UserCreationForm, LoginForm
+from django.shortcuts import redirect, render, get_object_or_404
+from .forms import UserCreationForm, LoginForm, UpdateUserForm, UpdateProfileForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.views import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
+
+from .models import Profile
 
 class CustomLoginView(LoginView):
     form_class = LoginForm
@@ -49,8 +51,25 @@ class RegisterView(View):
         return render(request, self.template_name, {'form': form})
 
 @login_required
-def profile_section_view(request):
-    return render(request, 'account/profile.html')
+def profile_section_view(request, pk):
+    if request.method == "POST":
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect('/authenticate/profile/')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
+        
+    context = {
+        "user_form": user_form,
+        "profile_form": profile_form
+    }
+    return render(request, 'account/profile.html', context)
 
 
 # make classes functionable name

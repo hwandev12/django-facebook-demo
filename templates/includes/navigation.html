@@ -26,9 +26,10 @@
             <li> <button class="" data-tooltip="Message" id="btn_msg"><i
                         class="fab fa-facebook-messenger    "></i></button></li>
             <li> <button class="" data-tooltip="Notification" id="btn_bell"> <i
-                        class="fas fa-bell    "></i></button></li>
-            <li> <button class="" data-tooltip="Profile" id="btn_profile"><i
-                        class="fas fa-user-cog    "></i></button> </li>
+                        class="fas fa-bell"></i></button></li>
+           {% if request.user.is_authenticated %}
+                 <li> <a class="" href="{% url 'authenticate:user-profile' request.user.pk %}" data-tooltip="Profile" id="btn_profile"><i class="fas fa-user-cog"></i></a></li>
+           {% endif %}
         </ul>
     </nav>
 </header>

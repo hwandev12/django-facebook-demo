@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
-
+import uuid
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, gender, password=None, **other_fields):
@@ -55,6 +55,7 @@ GENDER = (('man', 'Man'), ('woman', 'Woman'))
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True)
     email = models.EmailField(
         verbose_name='email address',
         max_length=250,
@@ -95,6 +96,7 @@ class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     
     avatar = models.ImageField(default='default.jpg', upload_to='profile')
+    bio = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.user.email
