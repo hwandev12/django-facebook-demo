@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'widget_tweaks',
+    "crispy_forms",
+    "crispy_bootstrap5",
 
     # local installments
     'authentication.apps.AuthenticationConfig',
@@ -120,6 +122,7 @@ STATICFILES_DIRS = (
     BASE_DIR / 'static',
 )
 STATIC_ROOT = BASE_DIR / "staticfiles"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -134,6 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_USER = 'husanboy0239@gmail.com'  #new
 # EMAIL_HOST_PASSWORD = "thignsdsd" #new
 # EMAIL_USE_TLS = True #new
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 

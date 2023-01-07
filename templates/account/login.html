@@ -31,7 +31,7 @@
                         <div class="input_field">
                             remember me {% render_field form.remember_me type="checkbox" class="form-control" %}
                         </div>
-                        <p>If you do not have account <a style="color: rgb(41, 139, 219);" href="{% url 'authenticate:user-register' %}">signup</a></p>
+                        <p>If you do not have account <a style="color: rgb(41, 139, 219);" href="{% url 'authenticate:user-register' %}">signup</a> or <a  style="color: rgb(41, 139, 219);" href="{% url 'password_reset_view' %}">forget password?</a></p>
                         <input type="submit" value="Login" class="button">
                     </form>
                     {{form.errors}}
