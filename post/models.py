@@ -15,4 +15,4 @@ class FacebookPost(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return "Post facebook"
+        return str(self.author)

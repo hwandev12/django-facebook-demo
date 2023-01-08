@@ -65,6 +65,7 @@ body {
     background-position: center;
     position: relative;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .fa-avatar-special {
@@ -90,10 +91,11 @@ body {
 }
 
 .top-cover-down-content-left {
-    width: 47%;
+    width: 500px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
+    padding-right: 70px;
 }
 .top-cover-down-content-left h2{
     font-weight: 900;
