@@ -40,26 +40,38 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                        <button type="button" class="btn-close close-modal-icon" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
+        
+    </section>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close close-modal-icon" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% load widget_tweaks %}
+                        {% csrf_token %}
+                        <div class="input_field">
+                            {% render_field form.post_text type="text" class="form-control" placeholder="Enter message" %}
+                        </div>
+                        <div class="form-group" style="margin-top: 15px;">
+                            {% render_field form.post_image type="file" class="form-control" %}
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary close-modal" data-bs-dismiss="modal" style="color: #333;">Close</button>
-                        <button style="color: #333;" type="button" class="btn btn-primary close-modal">Understood</button>
+                        <button type="button" class="btn btn-secondary close-modal" data-bs-dismiss="modal"
+                        style="color: #333;">Close</button>
+                        <button style="color: #333;" type="submit"
+                        class="btn btn-primary">Post</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-
-    </section>
+    </div>
     <!-- create post section -->
 
     <!-- posts section -->
