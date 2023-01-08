@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
 )
 import uuid
 from PIL import Image
+from django.urls import reverse
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, gender, password=None, **other_fields):
@@ -88,6 +89,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def is_staff(self):
         # yes all admins
         return self.is_admin
+    
+    def get_absolute_url(self):
+        """
+        this way we can redirect user to profile inside template
+        using get absolute url function
+        """
+        return reverse('authenticate:user-profile', args=[str(self.id)])
 
 class Profile(models.Model):
     """

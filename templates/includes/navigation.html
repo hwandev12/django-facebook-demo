@@ -15,7 +15,7 @@
 
             <li id="space2"></li>
 
-            <li> <a class=" active" data-tooltip="Home" href="#" id="home"> <i class="fas fa-home"></i> </a>
+            <li> <a class="active" data-tooltip="Home" href="/" id="home"> <i class="fas fa-home"></i> </a>
             </li>
             <li> <a class="" data-tooltip="Group" href="#" id="group"> <i class="fas fa-user-friends"></i></a></li>
             <li> <a class="" data-tooltip="Watch" href="#" id="tv"> <i class="fas fa-tv"></i> </a> </li>
@@ -28,7 +28,7 @@
             <li> <button class="" data-tooltip="Notification" id="btn_bell"> <i
                         class="fas fa-bell"></i></button></li>
            {% if request.user.is_authenticated %}
-                 <li> <a class="" href="{% url 'authenticate:user-profile' request.user.pk %}" data-tooltip="Profile" id="btn_profile"><i class="fas fa-user-cog"></i></a></li>
+                 <li> <a class="" href="{{ request.user.get_absolute_url }}" data-tooltip="Profile" id="btn_profile"><i class="fas fa-user-cog"></i></a></li>
            {% endif %}
         </ul>
     </nav>

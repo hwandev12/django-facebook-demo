@@ -20,6 +20,7 @@
 <body>
     {% include 'includes/navigation.html' %}
     <div class="wrapper-profile">
+        <!-- top covers starts here -->
         <div class="top-cover-image container" style="background-image: url({{ user.profile.avatar.url }});">
             <a class="btn btn-light" href="#"><i class="fa-solid fa-camera"></i>Edit Cover Photo</a>
         </div>
@@ -44,6 +45,9 @@
                 </div>
             </div>
         </div>
+        <!-- top covers ends here -->
+
+        {% include 'includes/profile_nav.html' %}
     </div>
 </body>
 
