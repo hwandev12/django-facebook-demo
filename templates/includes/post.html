@@ -29,13 +29,36 @@
             </div>
             <div class="icon_text">
                 <i class="fa-solid fa-photo-film"></i>
-                <p>Photo/Video</p>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Photo/Video
+                </button>
             </div>
             <div class="icon_text">
                 <i class="fa-regular fa-file-video"></i>
                 <p>Reel</p>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="btn-close close-modal-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary close-modal" data-bs-dismiss="modal" style="color: #333;">Close</button>
+                        <button style="color: #333;" type="button" class="btn btn-primary close-modal">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
     <!-- create post section -->
 
@@ -46,7 +69,8 @@
         <p class="top_p">Suggested for you</p>
         <hr class="top_hr">
         <div class="user_info">
-            <a href="{{ post.author.get_absolute_url }}"><img src="{{ post.author.profile.avatar.url }}" alt="No image"></a>
+            <a href="{{ post.author.get_absolute_url }}"><img src="{{ post.author.profile.avatar.url }}"
+                    alt="No image"></a>
             <div style="display: flex; align-items: flex-start; flex-direction: column;">
                 <span style="display: flex; align-items: center;">
                     <h3>{{ post.author.first_name }}</h3><i class="fa-solid fa-circle"></i>
