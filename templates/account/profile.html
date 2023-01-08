@@ -21,18 +21,18 @@
     {% include 'includes/navigation.html' %}
     <div class="wrapper-profile">
         <!-- top covers starts here -->
-        <div class="top-cover-image container" style="background-image: url({{ user.profile.avatar.url }});">
+        <div class="top-cover-image container" style="background-image: url({{ user_n.profile.avatar.url }});">
             <a class="btn btn-light" href="#"><i class="fa-solid fa-camera"></i>Edit Cover Photo</a>
         </div>
         <div class="top-cover-down">
             <div class="top-cover-down-content">
                 <div class="top-cover-down-content-left">
-                    <div class="avatar-radius" style="background-image: url({{ user.profile.avatar.url }});">
+                    <div class="avatar-radius" style="background-image: url({{ user_n.profile.avatar.url }});">
                         <i class="fa-solid fa-camera fa-avatar-special"></i>
                     </div>
                    <div class="top-cover-down-right-inner">
-                        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-                        <p>({{ user.profile.bio }})</p>
+                        <h2>{{ user_n.first_name }} {{ user_n.last_name }}</h2>
+                        <p>({{ user_n.profile.bio }})</p>
                         <p><a href="#">600 friends</a></p>
                         <a href="#"><img src="{% static 'images/nature.jpg' %}" alt="" width="30"></a>
                         <a href="#"><img src="{% static 'images/facebook.png' %}" alt="" width="30"></a>

@@ -1,12 +1,20 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
-class HomePageView(LoginRequiredMixin, TemplateView):
-    template_name = 'pages/home.html'
-    login_url = 'authenticate/login/'
+from post.models import FacebookPost
     
+class PostListView(ListView):
+    model = FacebookPost
+    context_object_name = 'posts'
+    template_name = 'pages/home.html'
+    
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 # make class names to function names
-home_page_view = HomePageView.as_view()
+post_list_view = PostListView.as_view()
 

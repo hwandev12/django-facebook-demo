@@ -1,12 +1,16 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import resolve
 from .forms import UserCreationForm, LoginForm, UpdateUserForm, UpdateProfileForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.views import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import get_user_model
 from .models import Profile
+
+User = get_user_model()
+
 
 class CustomLoginView(LoginView):
     form_class = LoginForm
@@ -52,6 +56,8 @@ class RegisterView(View):
 
 @login_required
 def profile_section_view(request, pk):
+    user_n = get_object_or_404(User, id=pk)
+    
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
@@ -67,7 +73,8 @@ def profile_section_view(request, pk):
         
     context = {
         "user_form": user_form,
-        "profile_form": profile_form
+        "profile_form": profile_form,
+        'user_n': user_n,
     }
     return render(request, 'account/profile.html', context)
 

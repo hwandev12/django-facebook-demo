@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # local installments
     'authentication.apps.AuthenticationConfig',
     'facebook.apps.FacebookConfig',
+    'post.apps.PostConfig',
 ]
 
 MIDDLEWARE = [

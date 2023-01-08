@@ -17,7 +17,9 @@
 
     <section class="create_post">
         <div class="inner_create_post_wrapper">
-            <img src="{% static 'images/nature.jpg' %}" alt="No image">
+            <a href="{{ request.user.get_absolute_url }}">
+                <img src="{{ user.profile.avatar.url }}" alt="No image">
+            </a>
             <input type="text" placeholder="What is on your mind?">
         </div>
         <div class="inner_bottom_post_wrapper">
@@ -39,26 +41,26 @@
 
     <!-- posts section -->
 
+    {% for post in posts %}
     <div class="posts">
         <p class="top_p">Suggested for you</p>
         <hr class="top_hr">
         <div class="user_info">
-            <img src="{% static 'images/nature.jpg' %}" alt="No image">
+            <a href="{{ post.author.get_absolute_url }}"><img src="{{ post.author.profile.avatar.url }}" alt="No image"></a>
             <div style="display: flex; align-items: flex-start; flex-direction: column;">
                 <span style="display: flex; align-items: center;">
-                    <h3>Travel</h3><i class="fa-solid fa-circle"></i>
+                    <h3>{{ post.author.first_name }}</h3><i class="fa-solid fa-circle"></i>
                     <a href="#">Follow</a>
                 </span>
-                <p class="date_post">27 December at 19:00</p>
+                <p class="date_post">{{ post.date_created }}</p>
             </div>
             <div class="icon_post">
                 <i class="fa-solid fa-ellipsis"></i>
                 <i class="fa-solid fa-xmark"></i>
             </div>
         </div>
-        <p class="content_post">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus consequatur autem
-            ullam nam.</p>
-        <div class="content_image" style="background-image: url({% static 'images/natures.jpg' %});"></div>
+        <p class="content_post">{{ post.post_text }}</p>
+        <div class="content_image" style="background-image: url({{ post.post_image.url }});"></div>
         <div class="bottom_comment_likes">
             <div class="inner_p">
                 <i class="fa-regular fa-thumbs-up"></i>
@@ -85,6 +87,7 @@
             </div>
         </section>
     </div>
+    {% endfor %}
 
     <!-- posts section -->
 

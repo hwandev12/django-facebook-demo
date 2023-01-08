@@ -1,10 +1,10 @@
 from django.urls import path, include
 from .views import (
-    home_page_view
+    post_list_view
 )
 
 app_name = 'facebook'
 
 urlpatterns = [
-    path('', home_page_view, name='home')
+    path('', post_list_view, name='home')
 ]
