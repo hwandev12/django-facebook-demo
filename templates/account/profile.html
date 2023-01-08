@@ -29,10 +29,13 @@
                     <div class="avatar-radius" style="background-image: url({{ user.profile.avatar.url }});">
                         <i class="fa-solid fa-camera fa-avatar-special"></i>
                     </div>
-                   <div>
+                   <div class="top-cover-down-right-inner">
                         <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-                        <p>(LifeStyle)</p>
-                        <p>600 friends</p>
+                        <p>({{ user.profile.bio }})</p>
+                        <p><a href="#">600 friends</a></p>
+                        <a href="#"><img src="{% static 'images/nature.jpg' %}" alt="" width="30"></a>
+                        <a href="#"><img src="{% static 'images/facebook.png' %}" alt="" width="30"></a>
+                        <a href="#"><img src="{% static 'images/user.png' %}" alt="" width="30"></a>
                    </div>
                 </div>
                 <div class="top-cover-down-content-right">

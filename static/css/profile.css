@@ -6,11 +6,12 @@
 
 body {
     font-family: 'Mulish', sans-serif;
+    background: rgb(231, 226, 226);
 }
 
 .wrapper-profile {
     width: 100%;
-    height: 100vh;
+    height: 200vh;
     box-shadow: 28px 200px 143px -98px rgba(0, 0, 0, 0.9) inset;
     -webkit-box-shadow: 28px 240px 143px -98px rgba(0, 0, 0, 0.9) inset;
     -moz-box-shadow: 28px 200px 143px -98px rgba(0, 0, 0, 0.9) inset;
@@ -19,14 +20,15 @@ body {
 .top-cover-image {
     position: relative;
     width: 75%;
-    height: 350px;
+    height: 340px;
     margin-left: auto;
     margin-right: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     cursor: pointer;
-    border-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .top-cover-image a {
@@ -47,15 +49,15 @@ body {
     /* background-color: red; */
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 3px;
     margin-bottom: 50px;
     padding: 17px 20px;
-    border-bottom: 2px solid rgb(187, 183, 183, 0.4);
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .avatar-radius {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -67,9 +69,9 @@ body {
 .fa-avatar-special {
     position: absolute;
     bottom: 15px;
-    right: 8px;
+    right: 4px;
     color: black;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     width: 45px;
     height: 45px;
     background-color: #ccc;
@@ -87,19 +89,27 @@ body {
 }
 
 .top-cover-down-content-left {
-    width: 51%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 .top-cover-down-content-left h2{
     font-weight: 900;
     text-transform: capitalize;
+    font-size: 30px;
 }
 .top-cover-down-content-left p{
     font-weight: 400;
     text-transform: capitalize;
     font-size: 25px;
+    margin-bottom: 0px !important;
+}
+
+.top-cover-down-content-left a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
 }
 
 .fa-plus{
@@ -125,10 +135,39 @@ body {
 .top-cover-down-content-right a:nth-child(2) {
     position: absolute;
     right: 20px;
-    top: 145px;
+    top: 130px;
     width: 120px;
     font-size: 15px;
 }
 .top-cover-down-content-right a:nth-child(1) {
     font-size: 15px;
+}
+
+.top-cover-down-right-inner img {
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    border: 2px solid white;
+}
+
+.top-cover-down-right-inner{
+    position: relative;
+    top: 10px;
+}
+
+.top-cover-down-right-inner a:nth-child(4) {
+    display: inline-block;
+    z-index: 3 !important;
+    position: absolute;
+}
+
+.top-cover-down-right-inner a:nth-child(5) {
+    position: absolute;
+    left: 20px;
+    z-index: 1;
+}
+.top-cover-down-right-inner a:nth-child(6) {
+    position: absolute;
+    left: 40px;
+    z-index: -1;
 }
