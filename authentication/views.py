@@ -62,12 +62,13 @@ class RegisterView(View):
 @login_required
 def profile_section_view(request, pk):
     user_n = get_object_or_404(User, id=pk)
+    current_user = request.user
     toast_user = False
 
-    if user_n.has_perm('authentication.special_status_edit'):
+    if current_user.has_perm('authentication.special_status_edit'):
         user_n = get_object_or_404(User, id=pk)
         toast_user = True
-    else:
+    elif not current_user.has_perm('authentication.special_status_other'):
         user_n = get_object_or_404(User, id=pk)
         toast_user = False
 
@@ -105,3 +106,6 @@ def profile_section_view(request, pk):
 login_form_view = CustomLoginView.as_view(
     redirect_authenticated_user=True, authentication_form=LoginForm)
 register_form_view = RegisterView.as_view()
+
+# ertagalik ishimda katta qilib har bitta user uchun bittadan permission beriladi ular shunchaki ko'rinishi uchun
+# lekin request.user uchun ikkita permission yaratiladi, 1-o'zini profilini ko'rish, 2-boshqalarni profileni prosta ko'rishga 
