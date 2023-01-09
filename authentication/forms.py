@@ -19,7 +19,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'first_name', 'last_name', 'gender')
+        fields = ['email', 'first_name', 'last_name', 'gender',]
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
@@ -32,7 +32,7 @@ class UserCreationForm(forms.ModelForm):
         """
         Save user with hashed password
         """
-        user = super().save(commit=True)
+        user = super().save(commit=False)
         user.set_password(self.cleaned_data['password1'])
         if commit:
             user.save()

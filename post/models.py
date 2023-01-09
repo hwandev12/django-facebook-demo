@@ -15,6 +15,6 @@ class FacebookPost(models.Model):
     post_image = models.ImageField(upload_to='posts/', blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
     post_video = models.FileField(validators=[validate_file_extension], blank=True)
-    
+
     def __str__(self):
         return str(self.author)

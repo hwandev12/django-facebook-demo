@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 </head>
 
 <body>
     {% include 'includes/navigation.html' %}
+    {% if toast_user %}
     <div class="wrapper-profile">
         <!-- top covers starts here -->
         <div class="top-cover-image container" style="background-image: url({{ user_n.profile.avatar.url }});">
@@ -30,14 +31,14 @@
                     <div class="avatar-radius" style="background-image: url({{ user_n.profile.avatar.url }});">
                         <i class="fa-solid fa-camera fa-avatar-special"></i>
                     </div>
-                   <div class="top-cover-down-right-inner">
+                    <div class="top-cover-down-right-inner">
                         <h2>{{ user_n.first_name }} {{ user_n.last_name }}</h2>
                         <p>({{ user_n.profile.bio }})</p>
                         <p><a href="#">600 friends</a></p>
                         <a href="#"><img src="{% static 'images/nature.jpg' %}" alt="" width="30"></a>
                         <a href="#"><img src="{% static 'images/facebook.png' %}" alt="" width="30"></a>
                         <a href="#"><img src="{% static 'images/user.png' %}" alt="" width="30"></a>
-                   </div>
+                    </div>
                 </div>
                 <div class="top-cover-down-content-right">
                     <a class="btn btn-primary" href="#"><i class="fa-solid fa-plus"></i>Add to Story</a>
@@ -49,6 +50,33 @@
 
         {% include 'includes/profile_nav.html' %}
     </div>
+    {% else %}
+    <div class="wrapper-profile">
+        <!-- top covers starts here -->
+        <div class="top-cover-image container" style="background-image: url({{ user_n.profile.avatar.url }});">
+        </div>
+        <div class="top-cover-down">
+            <div class="top-cover-down-content">
+                <div class="top-cover-down-content-left">
+                    <div class="avatar-radius" style="background-image: url({{ user_n.profile.avatar.url }});">
+                        <i class="fa-solid fa-camera fa-avatar-special"></i>
+                    </div>
+                    <div class="top-cover-down-right-inner">
+                        <h2>{{ user_n.first_name }} {{ user_n.last_name }}</h2>
+                        <p>({{ user_n.profile.bio }})</p>
+                        <p><a href="#">600 friends</a></p>
+                        <a href="#"><img src="{% static 'images/nature.jpg' %}" alt="" width="30"></a>
+                        <a href="#"><img src="{% static 'images/facebook.png' %}" alt="" width="30"></a>
+                        <a href="#"><img src="{% static 'images/user.png' %}" alt="" width="30"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top covers ends here -->
+
+        {% include 'includes/profile_nav.html' %}
+    </div>
+    {% endif %}
 </body>
 
 </html>

@@ -96,6 +96,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         using get absolute url function
         """
         return reverse('authenticate:user-profile', args=[str(self.id)])
+    
+    class Meta:
+        permissions = [
+            ('special_status_other', 'Can edit other profiles'),
+            ('special_status_edit', 'Can edit own profiles'),
+        ]
 
 class Profile(models.Model):
     """
@@ -106,6 +112,7 @@ class Profile(models.Model):
     
     avatar = models.ImageField(default='default.jpg', upload_to='profile')
     bio = models.CharField(max_length=200, blank=True)
+
 
     def __str__(self):
         return self.user.email
