@@ -9,5 +9,5 @@ class PostForm(forms.ModelForm):
     
     class Meta:
         model = FacebookPost
-        fields = ('post_text', 'post_image',)
+        fields = ('post_text', 'post_image', 'post_video')
     
