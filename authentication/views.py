@@ -64,20 +64,11 @@ def profile_section_view(request, pk):
     user_n = get_object_or_404(User, id=pk)
     current_user = request.user
     toast_user = False
-
-    if current_user.has_perm('authentication.special_status_edit'):
-        user_n = get_object_or_404(User, id=pk)
+    
+    if current_user == user_n:
         toast_user = True
-    elif not current_user.has_perm('authentication.special_status_other'):
-        user_n = get_object_or_404(User, id=pk)
+    else:
         toast_user = False
-
-    content_type = ContentType.objects.get_for_model(Profile)
-    permission = Permission.objects.get(
-        codename='special_status_edit',
-        content_type=content_type,
-    )
-    user_n.user_permissions.add(permission)
 
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
