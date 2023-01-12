@@ -1,4 +1,7 @@
 {% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">    
 <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
 <header>
     <nav class="navs">
@@ -22,14 +25,40 @@
             <li> <a class="" data-tooltip="Friend" href="#" id="friend"> <i class="fas fa-user-alt    "></i> </a>
             </li>
             <li id="space1"></li>
-            <li> <button class="" data-tooltip="Menu" id="btn_plus"><i class="fa-regular fa-compass"></i></button> </li>
-            <li> <button class="" data-tooltip="Message" id="btn_msg"><i
-                        class="fab fa-facebook-messenger    "></i></button></li>
-            <li> <button class="" data-tooltip="Notification" id="btn_bell"> <i
-                        class="fas fa-bell"></i></button></li>
-           {% if request.user.is_authenticated %}
-                 <li> <a class="" href="{{ request.user.get_absolute_url }}" data-tooltip="Profile" id="btn_profile"><i class="fas fa-user-cog"></i></a></li>
-           {% endif %}
+            <li>
+                <button class="" type="button" data-tooltip="Menu" id="btn_plus" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                    <i style="transform: rotate(-180deg); font-size: 15px;"
+                        class="fa-solid fa-arrow-right-from-bracket">
+                    </i>
+                </button>
+            </li>
+            <li>
+                <button class="" data-tooltip="Message" id="btn_msg"><i class="fab fa-facebook-messenger"></i>
+                </button>
+            </li>
+            <li>
+                <button class="" data-tooltip="Notification" id="btn_bell">
+                    <i class="fas fa-bell"></i>
+                </button>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li> <a class="" href="{{ request.user.get_absolute_url }}" data-tooltip="Profile" id="btn_profile"><i
+                        class="fas fa-user-cog"></i></a></li>
+            {% endif %}
         </ul>
     </nav>
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h2 class="logout_h" id="offcanvasTopLabel">Logout section<i class="fa-solid fa-triangle-exclamation"></i></h2>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p class="logout_p">You are logging out and you should belive site permissions</p>
+            <p class="logout_p">If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+            <p class="logout_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit pariatur voluptatum nam quasi facere officia architecto! Reprehenderit omnis neque magnam sunt sint eligendi amet natus. Quae vitae ad expedita omnis.</p>
+            <p class="logout_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, dolorum molestias doloremque quibusdam amet, incidunt repellendus saepe architecto sint iste voluptatibus magni tempora obcaecati laudantium reiciendis illum quod illo vel. Sequi dolorum alias earum sunt facilis, dolorem iusto! Aliquid, itaque quos? Porro amet accusantium ex quia. Alias eum ut, vitae molestias quaerat voluptate qui, voluptatem nemo autem maiores in recusandae? Eligendi pariatur iure voluptatem error saepe neque debitis doloribus! Modi sequi sint iure iste odit! Quia sit beatae nemo totam aliquid aspernatur qui consequuntur libero nisi et. Reiciendis, necessitatibus iusto. Dolore recusandae maiores ad. Temporibus aspernatur ea eius necessitatibus repellat.</p>
+            <a class="btn btn-danger mt-2" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
 </header>
