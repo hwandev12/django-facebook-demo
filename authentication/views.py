@@ -51,8 +51,8 @@ class RegisterView(View):
 
         if form.is_valid():
             form.save()
-            first_name = form.cleaned_data.get('first_name')
-            messages.success(request, f'Account created for {first_name}')
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}')
 
             return redirect(to='/')
 

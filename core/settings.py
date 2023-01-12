@@ -144,6 +144,8 @@ AUTHENTICATION_BACKENDS = [
 # social auth configs for github
 SOCIAL_AUTH_GITHUB_KEY = str(os.getenv('GITHUB_KEY'))
 SOCIAL_AUTH_GITHUB_SECRET = str(os.getenv('GITHUB_SECRET'))
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1068762443799-erqb5aau812fsd7qgpaqjah6lhfcc04p.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

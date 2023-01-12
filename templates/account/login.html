@@ -8,7 +8,7 @@
 <title>Registration</title>
 <div class="big_wrapper container">
     <div class="left_login">
-        <h2>facebook</h2>
+        <h2>House Clan</h2>
         <h4>Recent logins</h4>
         <p>Click your picture or add an account.</p>
         <div class="login_wrapper">
@@ -30,7 +30,7 @@
             <p>Sign in with Github</p>
         </div>
     </a>
-    <a style="text-decoration: none; color: #444 !important;" href="">
+    <a style="text-decoration: none; color: #444 !important;" href="{% url 'social:begin' 'google-oauth2' %}">
         <div class="social_auth">
             <i class="fa-brands fa-google"></i>
             <p>Sign in with Google</p>
@@ -47,7 +47,7 @@
                         {% load widget_tweaks %}
                         {% csrf_token %}
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                            {% render_field form.username type="email" class="form-control" placeholder="Email" %}
+                            {% render_field form.username type="text" class="form-control" placeholder="Username" %}
                         </div>
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                             {% render_field form.password type="password" class="form-control" placeholder="Password" %}

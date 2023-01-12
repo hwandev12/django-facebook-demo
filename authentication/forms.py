@@ -19,7 +19,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['email', 'first_name', 'last_name', 'gender',]
+        fields = ['email', 'first_name', 'last_name', 'gender', 'username']
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
@@ -46,12 +46,11 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'first_name', 'last_name', 'gender', 'is_active', 'is_admin')
+        fields = ('email', 'first_name', 'last_name', 'username', 'gender', 'is_active', 'is_admin')
 
 
 # login form
 class LoginForm(AuthenticationForm):
-    username = forms.EmailField()
     password = forms.CharField(max_length=50, required=True)
     remember_me = forms.BooleanField(required=False)
 
@@ -66,10 +65,6 @@ class UpdateUserForm(forms.ModelForm):
     UpdateUserForm interacts with the user model to let users 
     update their username and email.
     """
-    username = forms.EmailField(required=False)
-    first_name = forms.CharField(max_length=200, required=False)
-    last_name = forms.CharField(max_length=200, required=False)
-    gender = forms.ChoiceField(choices=GENDER, required=False)
     
     class Meta:
         model = User
