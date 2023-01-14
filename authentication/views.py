@@ -12,8 +12,19 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Permission
 from django.contrib.auth.decorators import permission_required
+from django.utils.timezone import now
+import pytz
+from datetime import datetime, timedelta
+from pytz import timezone
 
 User = get_user_model()
+
+class SetLastVisitMiddleware(object):
+    def process_response(self, request, response):
+        if request.user.is_authenticated():
+            # Update last visit time after request finished processing.
+            User.objects.filter(pk=request.user.pk).update(last_login=now())
+        return response
 
 
 class CustomLoginView(LoginView):
@@ -64,7 +75,7 @@ def profile_section_view(request, pk):
     user_n = get_object_or_404(User, id=pk)
     current_user = request.user
     toast_user = False
-    
+
     if current_user == user_n:
         toast_user = True
     else:
@@ -99,4 +110,4 @@ login_form_view = CustomLoginView.as_view(
 register_form_view = RegisterView.as_view()
 
 # ertagalik ishimda katta qilib har bitta user uchun bittadan permission beriladi ular shunchaki ko'rinishi uchun
-# lekin request.user uchun ikkita permission yaratiladi, 1-o'zini profilini ko'rish, 2-boshqalarni profileni prosta ko'rishga 
+# lekin request.user uchun ikkita permission yaratiladi, 1-o'zini profilini ko'rish, 2-boshqalarni profileni prosta ko'rishga

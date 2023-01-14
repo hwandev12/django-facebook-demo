@@ -20,7 +20,7 @@ class CustomUserAdmin(BaseUserAdmin):
         ProfileInline,
     ]
     
-    list_display = ('email', 'first_name', 'is_active', 'is_admin', 'is_staff')
+    list_display = ('email', 'first_name', 'is_active', 'is_admin', 'is_staff', 'last_login')
     list_filter = ('is_admin',)
     fieldsets = (
         ('Changeable points', {'fields': ('email', 'password',)}),

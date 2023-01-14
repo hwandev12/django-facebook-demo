@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     "crispy_forms",
     "crispy_bootstrap5",
+    'tz_detect',
     # social authentication
     'social_django',
 
@@ -114,13 +115,13 @@ AUTH_USER_MODEL = 'authentication.CustomUser'
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
-USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)

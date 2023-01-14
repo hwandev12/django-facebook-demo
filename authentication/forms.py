@@ -4,6 +4,8 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm 
 from django.contrib.auth import get_user_model
 
+from django.core import validators
+
 from .models import CustomUser, Profile
 
 User = get_user_model()
@@ -16,6 +18,7 @@ class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Password confirmation', widget=forms.PasswordInput)
+    email = forms.EmailField(initial='Enter your email', required=True, validators=[validators.EmailValidator(message='Invalida Message')])
 
     class Meta:
         model = CustomUser
