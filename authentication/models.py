@@ -48,7 +48,7 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     
-    avatar = models.ImageField(default='default.jpg', upload_to='profile')
+    avatar = models.ImageField(default='default_p.jpg', upload_to='profile')
     bio = models.CharField(max_length=200, blank=True)
 
 
