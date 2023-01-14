@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from django.urls import resolve
+from django.urls import resolve, reverse
 from .forms import UserCreationForm, LoginForm, UpdateUserForm, UpdateProfileForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -16,8 +16,10 @@ from django.utils.timezone import now
 import pytz
 from datetime import datetime, timedelta
 from pytz import timezone
+from django.http import HttpResponseRedirect
 
 User = get_user_model()
+
 
 class SetLastVisitMiddleware(object):
     def process_response(self, request, response):
@@ -38,9 +40,8 @@ class CustomLoginView(LoginView):
         if not remember_me:
             self.request.session.set_expiry(0)
             self.request.session.modified = True
-            
-        return super(CustomLoginView, self).form_valid(form)
 
+        return super(CustomLoginView, self).form_valid(form)
 
 
 class RegisterView(View):
@@ -72,15 +73,21 @@ class RegisterView(View):
 
 
 @login_required
-def profile_section_view(request, pk):
-    user_n = get_object_or_404(User, id=pk)
+def profile_section_view(request, user_name):
+    user_n = User.objects.get(username=user_name)
     current_user = request.user
     toast_user = False
+    user_following = User.objects.filter(username=user_name)
 
     if current_user == user_n:
         toast_user = True
+        user_following = User.objects.filter(following=user_n)
     else:
         toast_user = False
+        if user_following == current_user:
+            user_following = User.objects.filter(username=user_name)
+        else:
+            user_following = User.objects.filter(following=user_n)
 
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
@@ -100,15 +107,25 @@ def profile_section_view(request, pk):
         "user_form": user_form,
         "profile_form": profile_form,
         'user_n': user_n,
-        'toast_user': toast_user
+        'toast_user': toast_user,
+        "user_following": user_following,
     }
     return render(request, 'account/profile.html', context)
 
+def follow_toggle(request, author):
+    authorObj = User.objects.get(username=author)
+    currentUserObj = User.objects.get(username=request.user.username)
+    following = authorObj.following.all()
+    
+    if author != currentUserObj.username:
+        if currentUserObj in following:
+            authorObj.following.remove(currentUserObj.id)
+        else:
+            authorObj.following.add(currentUserObj.id)
+
+    return HttpResponseRedirect(reverse('authenticate:user-profile', args=[authorObj.username]))
 
 # make classes functionable name
 login_form_view = CustomLoginView.as_view(
     redirect_authenticated_user=True, authentication_form=LoginForm)
 register_form_view = RegisterView.as_view()
-
-# ertagalik ishimda katta qilib har bitta user uchun bittadan permission beriladi ular shunchaki ko'rinishi uchun
-# lekin request.user uchun ikkita permission yaratiladi, 1-o'zini profilini ko'rish, 2-boshqalarni profileni prosta ko'rishga

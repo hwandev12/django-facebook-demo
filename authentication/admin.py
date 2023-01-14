@@ -6,7 +6,8 @@ from .forms import (
     UserCreationForm
 )
 from .models import (
-    CustomUser, Profile
+    CustomUser,
+    Profile,
 )
     
 class ProfileInline(admin.TabularInline):
@@ -25,6 +26,7 @@ class CustomUserAdmin(BaseUserAdmin):
     fieldsets = (
         ('Changeable points', {'fields': ('email', 'password',)}),
         ('Personal info', {'fields': ('first_name', 'last_name', 'gender',)}),
+        ('Follow', {'fields': ('following',)}),
         ('Permissions', {'fields': ('is_admin', 'user_permissions', )}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin

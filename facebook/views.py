@@ -32,6 +32,7 @@ class PostCreateByUserListView(CreateView):
 
     def get_context_data(self, **kwargs):
         kwargs['posts'] = FacebookPost.objects.all()
+        kwargs['current_user'] = self.request.user
         return super(PostCreateByUserListView, self).get_context_data(**kwargs)
 
 # make class names to function names

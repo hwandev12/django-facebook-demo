@@ -86,8 +86,11 @@
                     alt="No image"></a>
             <div style="display: flex; align-items: flex-start; flex-direction: column;">
                 <span style="display: flex; align-items: center;">
-                    <h3>{{ post.author.username }}</h3><i class="fa-solid fa-circle"></i>
-                    <a href="#">Follow</a>
+                    <h3>{{ post.author.username }}</h3>
+                    {% if not post.author.username == user.username  %}
+                    <i class="fa-solid fa-circle"></i>
+                    <a href="{{ post.author.get_absolute_url }}">Follow</a>
+                   {% endif %}
                 </span>
                 <p class="date_post">{{ post.date_created }}</p>
             </div>

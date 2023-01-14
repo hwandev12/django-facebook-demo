@@ -24,6 +24,11 @@ class CustomUser(AbstractUser):
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     last_login = models.DateTimeField(null=True)
+    
+    # for following users
+    following = models.ManyToManyField(
+        "self", blank=True, related_name="followers", symmetrical=False
+    )
 
     def __str__(self):
         return self.email
@@ -33,14 +38,14 @@ class CustomUser(AbstractUser):
         this way we can redirect user to profile inside template
         using get absolute url function
         """
-        return reverse('authenticate:user-profile', args=[str(self.id)])
+        return reverse('authenticate:user-profile', args=[str(self.username)])
     
     class Meta:
         permissions = [
             ('special_status_other', 'Can edit other profiles'),
             ('special_status_edit', 'Can edit own profiles'),
         ]
-
+        
 class Profile(models.Model):
     """
     To create profile page, we need to create class related to OneToOneField with
