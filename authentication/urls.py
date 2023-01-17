@@ -13,5 +13,5 @@ urlpatterns = [
     path('register/', register_form_view, name='user-register'),
     path('login/', login_form_view, name='user-login'),
     path('logout/', logout_form_view.as_view(), name='user-logout'),
-    path('profile/<str:user_name>/', profile_section_view, name='user-profile')
+    path('profile/<user_name>/', profile_section_view, name='user-profile'),
 ]
