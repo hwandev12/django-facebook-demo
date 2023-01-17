@@ -77,17 +77,11 @@ def profile_section_view(request, user_name):
     user_n = User.objects.get(username=user_name)
     current_user = request.user
     toast_user = False
-    user_following = User.objects.filter(username=user_name)
 
     if current_user == user_n:
         toast_user = True
-        user_following = User.objects.filter(following=user_n)
     else:
         toast_user = False
-        if user_following == current_user:
-            user_following = User.objects.filter(username=user_name)
-        else:
-            user_following = User.objects.filter(following=user_n)
 
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
@@ -108,22 +102,9 @@ def profile_section_view(request, user_name):
         "profile_form": profile_form,
         'user_n': user_n,
         'toast_user': toast_user,
-        "user_following": user_following,
     }
     return render(request, 'account/profile.html', context)
 
-def follow_toggle(request, author):
-    authorObj = User.objects.get(username=author)
-    currentUserObj = User.objects.get(username=request.user.username)
-    following = authorObj.following.all()
-    
-    if author != currentUserObj.username:
-        if currentUserObj in following:
-            authorObj.following.remove(currentUserObj.id)
-        else:
-            authorObj.following.add(currentUserObj.id)
-
-    return HttpResponseRedirect(reverse('authenticate:user-profile', args=[authorObj.username]))
 
 # make classes functionable name
 login_form_view = CustomLoginView.as_view(

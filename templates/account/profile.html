@@ -35,7 +35,7 @@
                         <h2>{{ user.first_name }} {{ user.last_name }}</h2>
                         <p>({{ user.profile.bio }})</p>
                         <p><a href="#">{{ user.following.count }} followers {{ user.followers.count }} followings</a></p>
-                        <a href="#"><img src="{{ user_following.profile.avatar.url }}" alt="" width="30"></a>
+                        <a href="#"><img src="{{ user.profile.avatar.url }}" alt="" width="30"></a>
                     </div>
                 </div>
                 <div class="top-cover-down-content-right">
@@ -63,13 +63,8 @@
                         <p>({{ user_n.profile.bio }})</p>
                         <p><a href="#">{{ user_n.following.count }} followers</a></p>
                         <p><a href="#">{{ user_n.followers.count }} following</a></p>
-                        <a href="#"><img src="{{ user_following.profile.avatar.url }}" alt="" width="30"></a>
+                        <a href="#"><img src="{{ user_n.profile.avatar.url }}" alt="" width="30"></a>
                     </div>
-                    {% if request.user in user_n.following.all %}
-                    <a href="{% url 'authenticate:followToggle' author=user_n.username  %}" class="btn btn-primary">Unfollow</a>
-                    {% else %}
-                    <a href="{% url 'authenticate:followToggle' author=user_n.username  %}" class="btn btn-primary"> Follow </a>
-                    {% endif %}
                 </div>
             </div>
         </div>

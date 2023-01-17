@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
+from .models import Profile
 from .forms import (
     UserChangeForm,
     UserCreationForm
@@ -26,7 +27,6 @@ class CustomUserAdmin(BaseUserAdmin):
     fieldsets = (
         ('Changeable points', {'fields': ('email', 'password',)}),
         ('Personal info', {'fields': ('first_name', 'last_name', 'gender',)}),
-        ('Follow', {'fields': ('following',)}),
         ('Permissions', {'fields': ('is_admin', 'user_permissions', )}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -37,7 +37,7 @@ class CustomUserAdmin(BaseUserAdmin):
             'fields': ('email', 'first_name', 'password1', 'password2'),
         }),
     )
-    search_fields = ('email',)
+    search_fields = ('username',)
     ordering = ('email',)
     filter_horizontal = ()
 
