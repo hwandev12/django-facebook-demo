@@ -6,7 +6,7 @@
         <div class="inner_wrapper">
             <i class="fa-solid fa-plus"></i>
             <div class="right_inner_wrapper">
-                <h2>Create Story</h2>
+                <h2>Some thing here</h2>
                 <p>Share a photo or write something</p>
             </div>
         </div>
@@ -15,7 +15,7 @@
 
     <!-- create post section -->
 
-    <section class="create_post">
+    {% comment %} <section class="create_post">
         <div class="inner_create_post_wrapper">
             <a href="{{ request.user.get_absolute_url }}">
                 <img src="{{ user.profile.avatar.url }}" alt="No image">
@@ -41,7 +41,7 @@
 
         <!-- Modal -->
         
-    </section>
+    </section> {% endcomment %}
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -78,18 +78,18 @@
     <!-- posts section -->
 
     {% for post in posts %}
-    <div class="posts">
+    <div class="posts" style="width: 80%;">
         <p class="top_p">Suggested for you</p>
         <hr class="top_hr">
         <div class="user_info">
-            <a href="{{ post.author.get_absolute_url }}"><img src="{{ post.author.profile.avatar.url }}"
-                    alt="No image"></a>
+            <a href="#"><img src="{{ post.author.profile.avatar.url }}"
+                    alt="No image" class="img_a"></a>
             <div style="display: flex; align-items: flex-start; flex-direction: column;">
                 <span style="display: flex; align-items: center;">
                     <h3>{{ post.author.username }}</h3>
                     {% if not post.author.username == user.username  %}
                     <i class="fa-solid fa-circle"></i>
-                    <a href="{{ post.author.get_absolute_url }}">Follow</a>
+                    <a href="#">Latest</a>
                    {% endif %}
                 </span>
                 <p class="date_post">{{ post.date_created }}</p>

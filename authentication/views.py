@@ -17,6 +17,7 @@ import pytz
 from datetime import datetime, timedelta
 from pytz import timezone
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 User = get_user_model()
 
@@ -76,12 +77,6 @@ class RegisterView(View):
 def profile_section_view(request, user_name):
     user_n = User.objects.get(username=user_name)
     current_user = request.user
-    toast_user = False
-
-    if current_user == user_n:
-        toast_user = True
-    else:
-        toast_user = False
 
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
@@ -101,10 +96,8 @@ def profile_section_view(request, user_name):
         "user_form": user_form,
         "profile_form": profile_form,
         'user_n': user_n,
-        'toast_user': toast_user,
     }
     return render(request, 'account/profile.html', context)
-
 
 # make classes functionable name
 login_form_view = CustomLoginView.as_view(

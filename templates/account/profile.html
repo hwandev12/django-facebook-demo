@@ -19,7 +19,7 @@
 
 <body>
     {% include 'includes/navigation.html' %}
-    {% if toast_user %}
+
     <div class="wrapper-profile">
         <!-- top covers starts here -->
         <div class="top-cover-image container" style="background-image: url({{ user.profile.avatar.url }});">
@@ -34,7 +34,6 @@
                     <div class="top-cover-down-right-inner">
                         <h2>{{ user.first_name }} {{ user.last_name }}</h2>
                         <p>({{ user.profile.bio }})</p>
-                        <p><a href="#">{{ user.following.count }} followers {{ user.followers.count }} followings</a>
                         </p>
                         <a href="#"><img src="{{ user.profile.avatar.url }}" alt="" width="30"></a>
                     </div>
@@ -49,32 +48,7 @@
 
         {% include 'includes/profile_nav.html' %}
     </div>
-    {% else %}
-    <div class="wrapper-profile">
-        <!-- top covers starts here -->
-        <div class="top-cover-image container" style="background-image: url({{ user_n.profile.avatar.url }});">
-        </div>
-        <div class="top-cover-down">
-            <div class="top-cover-down-content">
-                <div class="top-cover-down-content-left">
-                    <div class="avatar-radius" style="background-image: url({{ user_n.profile.avatar.url }});">
-                    </div>
-                    <div class="top-cover-down-right-inner">
-                        <h2>{{ user_n.first_name }} {{ user_n.last_name }}</h2>
-                        <p>({{ user_n.profile.bio }})</p>
-                        <p><a href="#">{{ user_n.following.count }} followers</a></p>
-                        <p><a href="#">{{ user_n.followers.count }} following</a></p>
-                        <a href="#"><img src="{{ user_n.profile.avatar.url }}" alt="" width="30"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- top covers ends here -->
-
-    {% include 'includes/profile_nav.html' %}
-    </div>
-    {% endif %}
 </body>
 
 </html>

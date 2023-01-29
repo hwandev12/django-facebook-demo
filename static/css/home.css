@@ -203,7 +203,7 @@ body {
 
 .content_image {
     width: 100%;
-    height: 500px;
+    height: 300px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -304,4 +304,8 @@ body {
     color: red;
     font-size: 18px;
     padding-left: 5px;
+}
+
+.img_a:hover {
+    cursor: not-allowed;
 }
