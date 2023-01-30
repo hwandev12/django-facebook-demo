@@ -76,7 +76,6 @@ class RegisterView(View):
 @login_required
 def profile_section_view(request, user_name):
     user_n = User.objects.get(username=user_name)
-    current_user = request.user
 
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
