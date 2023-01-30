@@ -29,10 +29,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # 3rd party apps
     'widget_tweaks',
     "crispy_forms",
     "crispy_bootstrap5",
     'tz_detect',
+    'rest_framework',
+    'corsheaders',
     # social authentication
     'social_django',
 
@@ -40,11 +43,13 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'facebook.apps.FacebookConfig',
     'post.apps.PostConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,8 +137,18 @@ TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://localhost:8000',
+)
 
 
+# rest framework
+REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': [
+            'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
