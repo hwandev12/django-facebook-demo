@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth',
     'rest_auth.registration',
+    'rest_framework_swagger',
     # social authentication
     'social_django',
 
@@ -149,6 +150,10 @@ CORS_ORIGIN_WHITELIST = (
     'https://web.postman.co',
 )
 
+SWAGGER_SETTINGS = {
+    'LOGIN_URL': 'rest_framework:login',
+    'LOGOUT_URL': 'rest_framework:logout'
+}
 
 # rest framework
 REST_FRAMEWORK = {

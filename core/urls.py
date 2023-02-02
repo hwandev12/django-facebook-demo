@@ -12,9 +12,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.documentation import include_docs_urls
 
-from rest_framework.schemas import get_schema_view
+API_TITLE = "Blog API"
+API_DESCRIPTION = "This document describes how to use my own blog page for their frontend"
 
-schema_view = get_schema_view(title="Blog API")
+from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.views import get_swagger_view
+schema_view = get_swagger_view(title=API_TITLE)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +33,7 @@ urlpatterns = [
     re_path(r'^api/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
     re_path(r'^logout/$', LogoutView.as_view(), name='logout'),
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),
-    path('docs/', include_docs_urls(title="Blog API")),
-    path('schema/', schema_view),
+    path('docs/', include_docs_urls(title=API_TITLE, description=API_DESCRIPTION)),
+    # path('schema/', schema_view),
+    path('swagger-docs/', schema_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

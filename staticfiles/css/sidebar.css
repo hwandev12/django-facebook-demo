@@ -1,0 +1,10 @@
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.sideb {
+    height: 90vh !important;
+    width: 40% !important;
+    overflow-y: scroll !important;
+}

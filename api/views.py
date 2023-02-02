@@ -9,7 +9,7 @@ from .permissions import IsAuthorOrReadOnly
 User = get_user_model()
 
 class PostAPIView(viewsets.ModelViewSet):
-    permission_classes = (IsAuthorOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated, IsAuthorOrReadOnly,)
     queryset = FacebookPost.objects.all()
     serializer_class = PostSerializer
     
