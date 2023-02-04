@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'allauth',
     'allauth.account',
-    'rest_auth',
     'rest_auth.registration',
     'rest_framework_swagger',
     # social authentication
